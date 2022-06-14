@@ -1,0 +1,154 @@
+2021-02-15 19:37:03.312 [debug] <0.79.0>@lager_handler_watcher:126 Lager installed handler {lager_file_backend,
+                            "/System/Volumes/Data/repos/basho_bench/tests/20210215_193703/error.log"} into lager_event
+2021-02-15 19:37:03.312 [debug] <0.81.0>@lager_handler_watcher:126 Lager installed handler {lager_file_backend,
+                            "/System/Volumes/Data/repos/basho_bench/tests/20210215_193703/console.log"} into lager_event
+2021-02-15 19:37:03.312 [debug] <0.83.0>@lager_handler_watcher:126 Lager installed handler error_logger_lager_h into error_logger
+2021-02-15 19:37:03.335 [debug] <0.66.0> Supervisor gr_param_sup started gr_param:start_link(gr_lager_default_tracer_params) at pid <0.85.0>
+2021-02-15 19:37:03.335 [debug] <0.65.0> Supervisor gr_counter_sup started gr_counter:start_link(gr_lager_default_tracer_counters) at pid <0.86.0>
+2021-02-15 19:37:03.339 [debug] <0.67.0> Supervisor gr_manager_sup started gr_manager:start_link(gr_lager_default_tracer_params_mgr, gr_lager_default_tracer_params, []) at pid <0.87.0>
+2021-02-15 19:37:03.339 [debug] <0.67.0> Supervisor gr_manager_sup started gr_manager:start_link(gr_lager_default_tracer_counters_mgr, gr_lager_default_tracer_counters, [{input,0},{filter,0},{output,0},{job_input,0},{job_run,0},{job_time,0},{job_error,0}]) at pid <0.88.0>
+2021-02-15 19:37:03.779 [debug] <0.75.0>@lager_handler_watcher:126 Lager installed handler lager_backend_throttle into lager_event
+2021-02-15 19:37:04.278 [info] <0.33.0> Application lager started on node nonode@nohost
+2021-02-15 19:37:04.280 [notice] <0.72.0>@lager_file_backend:141 Changed loglevel of /System/Volumes/Data/repos/basho_bench/tests/20210215_193703/console.log to debug
+2021-02-15 19:37:04.293 [info] <0.5.0>@basho_bench:log_dimensions:253 Est. data size: 4.77 MB
+2021-02-15 19:37:04.366 [debug] <0.97.0> Supervisor sasl_safe_sup started alarm_handler:start_link() at pid <0.98.0>
+2021-02-15 19:37:04.366 [debug] <0.96.0> Supervisor sasl_sup started supervisor:start_link({local,sasl_safe_sup}, sasl, safe) at pid <0.97.0>
+2021-02-15 19:37:04.381 [debug] <0.96.0> Supervisor sasl_sup started release_handler:start_link() at pid <0.99.0>
+2021-02-15 19:37:04.382 [info] <0.33.0> Application sasl started on node nonode@nohost
+2021-02-15 19:37:04.406 [info] <0.33.0> Application crypto started on node nonode@nohost
+2021-02-15 19:37:04.438 [debug] <0.110.0> Supervisor folsom_sup started folsom_sample_slide_sup:start_link() at pid <0.111.0>
+2021-02-15 19:37:04.443 [debug] <0.110.0> Supervisor folsom_sup started folsom_meter_timer_server:start_link() at pid <0.112.0>
+2021-02-15 19:37:04.448 [debug] <0.110.0> Supervisor folsom_sup started folsom_metrics_histogram_ets:start_link() at pid <0.113.0>
+2021-02-15 19:37:04.448 [info] <0.33.0> Application folsom started on node nonode@nohost
+2021-02-15 19:37:04.488 [info] <0.106.0>@basho_bench_stats_writer_csv:new:43 module=basho_bench_stats_writer_csv event=start stats_sink=csv
+2021-02-15 19:37:04.489 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_stats:start_link() at pid <0.106.0>
+2021-02-15 19:37:04.496 [debug] <0.117.0>@basho_bench_keygen:new:105 ID 1 generating range 0 to 2500
+2021-02-15 19:37:04.496 [info] <0.117.0>@basho_bench_valgen:init_source:89 Random source: calling crypto:strong_rand_bytes(100663296) (override with the 'value_generator_source_size' config option
+2021-02-15 19:37:04.737 [info] <0.117.0>@basho_bench_valgen:init_source:96 Random source: finished crypto:rand_bytes(100663296)
+2021-02-15 19:37:04.751 [debug] <0.119.0>@basho_bench_driver_http:new:44 ID: 1
+2021-02-15 19:37:04.761 [debug] <0.123.0> Supervisor ibrowse_sup started ibrowse:start_link() at pid <0.124.0>
+2021-02-15 19:37:04.762 [info] <0.33.0> Application ibrowse started on node nonode@nohost
+2021-02-15 19:37:04.762 [debug] <0.126.0>@basho_bench_keygen:new:105 ID 2 generating range 2500 to 5000
+2021-02-15 19:37:04.762 [debug] <0.127.0>@basho_bench_driver_http:new:44 ID: 2
+2021-02-15 19:37:04.762 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_1, 1) at pid <0.117.0>
+2021-02-15 19:37:04.762 [debug] <0.128.0>@basho_bench_keygen:new:105 ID 3 generating range 5000 to 7500
+2021-02-15 19:37:04.762 [debug] <0.129.0>@basho_bench_driver_http:new:44 ID: 3
+2021-02-15 19:37:04.762 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_2, 2) at pid <0.126.0>
+2021-02-15 19:37:04.762 [debug] <0.130.0>@basho_bench_keygen:new:105 ID 4 generating range 7500 to 10000
+2021-02-15 19:37:04.762 [debug] <0.131.0>@basho_bench_driver_http:new:44 ID: 4
+2021-02-15 19:37:04.762 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_3, 3) at pid <0.128.0>
+2021-02-15 19:37:04.762 [debug] <0.132.0>@basho_bench_keygen:new:105 ID 5 generating range 10000 to 12500
+2021-02-15 19:37:04.762 [debug] <0.133.0>@basho_bench_driver_http:new:44 ID: 5
+2021-02-15 19:37:04.762 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_4, 4) at pid <0.130.0>
+2021-02-15 19:37:04.762 [debug] <0.134.0>@basho_bench_keygen:new:105 ID 6 generating range 12500 to 15000
+2021-02-15 19:37:04.762 [debug] <0.135.0>@basho_bench_driver_http:new:44 ID: 6
+2021-02-15 19:37:04.763 [debug] <0.136.0>@basho_bench_keygen:new:105 ID 7 generating range 15000 to 17500
+2021-02-15 19:37:04.763 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_5, 5) at pid <0.132.0>
+2021-02-15 19:37:04.763 [debug] <0.137.0>@basho_bench_driver_http:new:44 ID: 7
+2021-02-15 19:37:04.763 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_6, 6) at pid <0.134.0>
+2021-02-15 19:37:04.763 [debug] <0.138.0>@basho_bench_keygen:new:105 ID 8 generating range 17500 to 20000
+2021-02-15 19:37:04.763 [debug] <0.139.0>@basho_bench_driver_http:new:44 ID: 8
+2021-02-15 19:37:04.763 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_7, 7) at pid <0.136.0>
+2021-02-15 19:37:04.763 [debug] <0.140.0>@basho_bench_keygen:new:105 ID 9 generating range 20000 to 22500
+2021-02-15 19:37:04.763 [debug] <0.141.0>@basho_bench_driver_http:new:44 ID: 9
+2021-02-15 19:37:04.763 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_8, 8) at pid <0.138.0>
+2021-02-15 19:37:04.763 [debug] <0.142.0>@basho_bench_keygen:new:105 ID 10 generating range 22500 to 25000
+2021-02-15 19:37:04.763 [debug] <0.143.0>@basho_bench_driver_http:new:44 ID: 10
+2021-02-15 19:37:04.763 [debug] <0.144.0>@basho_bench_keygen:new:105 ID 11 generating range 25000 to 27500
+2021-02-15 19:37:04.763 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_9, 9) at pid <0.140.0>
+2021-02-15 19:37:04.763 [debug] <0.145.0>@basho_bench_driver_http:new:44 ID: 11
+2021-02-15 19:37:04.763 [debug] <0.146.0>@basho_bench_keygen:new:105 ID 12 generating range 27500 to 30000
+2021-02-15 19:37:04.764 [debug] <0.147.0>@basho_bench_driver_http:new:44 ID: 12
+2021-02-15 19:37:04.764 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_10, 10) at pid <0.142.0>
+2021-02-15 19:37:04.764 [debug] <0.148.0>@basho_bench_keygen:new:105 ID 13 generating range 30000 to 32500
+2021-02-15 19:37:04.764 [debug] <0.149.0>@basho_bench_driver_http:new:44 ID: 13
+2021-02-15 19:37:04.764 [debug] <0.150.0>@basho_bench_keygen:new:105 ID 14 generating range 32500 to 35000
+2021-02-15 19:37:04.764 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_11, 11) at pid <0.144.0>
+2021-02-15 19:37:04.764 [debug] <0.151.0>@basho_bench_driver_http:new:44 ID: 14
+2021-02-15 19:37:04.764 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_12, 12) at pid <0.146.0>
+2021-02-15 19:37:04.764 [debug] <0.152.0>@basho_bench_keygen:new:105 ID 15 generating range 35000 to 37500
+2021-02-15 19:37:04.764 [debug] <0.153.0>@basho_bench_driver_http:new:44 ID: 15
+2021-02-15 19:37:04.764 [debug] <0.154.0>@basho_bench_keygen:new:105 ID 16 generating range 37500 to 40000
+2021-02-15 19:37:04.764 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_13, 13) at pid <0.148.0>
+2021-02-15 19:37:04.764 [debug] <0.155.0>@basho_bench_driver_http:new:44 ID: 16
+2021-02-15 19:37:04.764 [debug] <0.156.0>@basho_bench_keygen:new:105 ID 17 generating range 40000 to 42500
+2021-02-15 19:37:04.764 [debug] <0.157.0>@basho_bench_driver_http:new:44 ID: 17
+2021-02-15 19:37:04.764 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_14, 14) at pid <0.150.0>
+2021-02-15 19:37:04.764 [debug] <0.158.0>@basho_bench_keygen:new:105 ID 18 generating range 42500 to 45000
+2021-02-15 19:37:04.764 [debug] <0.159.0>@basho_bench_driver_http:new:44 ID: 18
+2021-02-15 19:37:04.764 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_15, 15) at pid <0.152.0>
+2021-02-15 19:37:04.765 [debug] <0.160.0>@basho_bench_keygen:new:105 ID 19 generating range 45000 to 47500
+2021-02-15 19:37:04.765 [debug] <0.161.0>@basho_bench_driver_http:new:44 ID: 19
+2021-02-15 19:37:04.765 [debug] <0.162.0>@basho_bench_keygen:new:105 ID 20 generating range 47500 to 50000
+2021-02-15 19:37:04.765 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_16, 16) at pid <0.154.0>
+2021-02-15 19:37:04.765 [debug] <0.163.0>@basho_bench_driver_http:new:44 ID: 20
+2021-02-15 19:37:04.765 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_17, 17) at pid <0.156.0>
+2021-02-15 19:37:04.765 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_18, 18) at pid <0.158.0>
+2021-02-15 19:37:04.765 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_19, 19) at pid <0.160.0>
+2021-02-15 19:37:04.765 [debug] <0.105.0> Supervisor basho_bench_sup started basho_bench_worker:start_link(basho_bench_worker_20, 20) at pid <0.162.0>
+2021-02-15 19:37:04.766 [debug] <0.53.0> Supervisor kernel_safe_sup started timer:start_link() at pid <0.164.0>
+2021-02-15 19:37:04.770 [info] <0.153.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.153.0> on nonode@nohost
+2021-02-15 19:37:04.770 [info] <0.149.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.149.0> on nonode@nohost
+2021-02-15 19:37:04.770 [info] <0.141.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.141.0> on nonode@nohost
+2021-02-15 19:37:04.770 [info] <0.137.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.137.0> on nonode@nohost
+2021-02-15 19:37:04.771 [info] <0.33.0> Application basho_bench started on node nonode@nohost
+2021-02-15 19:37:05.389 [debug] <0.166.0> Supervisor inet_gethost_native_sup started undefined at pid <0.167.0>
+2021-02-15 19:37:05.389 [debug] <0.53.0> Supervisor kernel_safe_sup started inet_gethost_native:start_link() at pid <0.166.0>
+2021-02-15 19:37:14.783 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:37:24.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:37:34.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:37:44.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:37:54.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,chapter},{get,chapter}}
+2021-02-15 19:38:04.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:38:04.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,chapter},{get,chapter}}
+2021-02-15 19:38:14.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:38:24.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:38:34.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:38:44.768 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:38:54.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,chapter},{get,chapter}}
+2021-02-15 19:39:14.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:39:24.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:39:34.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:39:44.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:39:44.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,chapter},{get,chapter}}
+2021-02-15 19:39:54.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:40:04.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:40:04.768 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,chapter},{get,chapter}}
+2021-02-15 19:40:14.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:40:24.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:40:24.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,chapter},{get,chapter}}
+2021-02-15 19:40:34.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:40:44.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:40:54.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:41:04.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:41:14.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:41:24.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:41:34.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,chapter},{get,chapter}}
+2021-02-15 19:41:44.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:41:54.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:42:04.768 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:42:04.771 [info] <0.161.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.161.0> on nonode@nohost
+2021-02-15 19:42:04.772 [info] <0.147.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.147.0> on nonode@nohost
+2021-02-15 19:42:04.772 [info] <0.131.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.131.0> on nonode@nohost
+2021-02-15 19:42:04.772 [info] <0.127.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.127.0> on nonode@nohost
+2021-02-15 19:42:04.772 [info] <0.129.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.129.0> on nonode@nohost
+2021-02-15 19:42:14.768 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:42:24.766 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:44:14.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:44:34.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:45:04.771 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:45:14.769 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:47:04.770 [info] <0.157.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.157.0> on nonode@nohost
+2021-02-15 19:47:04.771 [info] <0.155.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.155.0> on nonode@nohost
+2021-02-15 19:47:04.771 [info] <0.119.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.119.0> on nonode@nohost
+2021-02-15 19:49:44.767 [warning] <0.106.0>@basho_bench_stats_writer_csv:report_latency:103 No data for op: {{get,book},{get,book}}
+2021-02-15 19:52:04.771 [info] <0.163.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.163.0> on nonode@nohost
+2021-02-15 19:52:04.771 [info] <0.159.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.159.0> on nonode@nohost
+2021-02-15 19:52:04.771 [info] <0.151.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.151.0> on nonode@nohost
+2021-02-15 19:52:04.771 [info] <0.145.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.145.0> on nonode@nohost
+2021-02-15 19:52:04.771 [info] <0.139.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.139.0> on nonode@nohost
+2021-02-15 19:52:04.771 [info] <0.143.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.143.0> on nonode@nohost
+2021-02-15 19:52:04.771 [info] <0.135.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.135.0> on nonode@nohost
+2021-02-15 19:52:04.771 [info] <0.133.0>@basho_bench_worker:worker_idle_loop:247 Starting 1.0e3 ms/req fixed rate worker: <0.133.0> on nonode@nohost
+2021-02-15 19:57:05.774 [info] <0.106.0>@basho_bench_stats:report_total_errors:291 No Errors.
+2021-02-15 19:57:05.774 [info] <0.106.0>@basho_bench_stats_writer_csv:terminate:62 module=basho_bench_stats_writer_csv event=stop stats_sink=csv

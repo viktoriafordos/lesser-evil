@@ -1,0 +1,548 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+%% For the formula
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{pgfplots}
+
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage[boxed]{algorithm}
+\usepackage{algpseudocode}
+%\usepackage{bchart}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{parcolumns}
+\usepackage{listings}
+\lstloadlanguages{
+        erlang
+}
+\lstset{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  postbreak=\space\space, 
+  breakindent=5pt,
+  frameshape={RYRYNY}{y}{y}{RYRYNY},
+  xleftmargin=\parindent,
+  language=erlang,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\color{black},
+  commentstyle=\itshape\color{gray!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\title[ Lesser Evil]
+{{\small Lesser Evil: \\ Embracing Failure to Protect Overall System Availability}
+}
+\author[Viktória Fördős, Alexandre Jorge Barbosa Rodrigues]
+       {{\large
+		Viktória Fördős, Alexandre Jorge Barbosa Rodrigues
+       }}
+\institute{
+Cisco, Sweden
+}
+\date{{\scriptsize DAIS'22, Lucca}}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\section{Motivation}
+\subsection{Erlang Systems}
+\begin{frame}{Erlang}
+\begin{itemize}
+\item Was designed in the Ericsson software technology lab for systems that will never stop or fail. 
+\item First use case: multi-service switch, AXD 301.
+\item A dynamically typed, concurrent, distributed, fault-tolerant, functional programming language. 
+\item Is based on the actor model, an actor is an Erlang process.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Erlang}
+\begin{itemize}
+\item Processes  can be started and stopped at any time.
+\item Processes can fail.
+\item Processes share nothing.
+\item Processes are organised into applications. 
+\item Multiple applications are deployed as one Erlang node. An Erlang node is one OS process.
+\item Inspecting the processes and the runtime system have built-in support.
+\end{itemize}
+\end{frame}
+
+\subsection{Embedded Systems}
+\begin{frame}{Focus: Embedded Systems}
+Embedded systems are widespread
+\begin{itemize}
+\item network elements,
+\item military use cases,
+\item IoT.
+\end{itemize}
+
+Embedded systems are expected to be responsive, and always available.
+
+Embedded systems usually have
+\begin{itemize}
+\item weak processing capabilities,
+\item very limited physical memory,
+\item usually no virtual memory.
+\end{itemize}
+
+\end{frame}
+
+
+\subsection{Embedded Device Controller}
+\begin{frame}{Example use case: Embedded device controller}
+\begin{itemize}
+	\item The system is designed to run on and control an embedded device with limited memory and slow processing capability.
+	\item The system and the device are expected to be always available.
+%	\item The control system is written in Erlang.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal operation}
+\begin{itemize}
+	\item The controller receives administrative requests that it processes, and as a result of processing, it executes commands on the embedded device. 
+	\item The controller usually receives a few, small requests, but sometimes a large request arrives.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Low memory conditions}
+\begin{itemize}
+	\item If a large request arrives when small requests are already being processed, the memory is not enough. 
+	\item Device becomes unresponsive, worst case it even reboots.
+	\item {\bfseries Does not satisfy high availability requirements.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Existing solutions}
+The only solution to manage such situation is the Linux OOM Manager.
+\begin{itemize}
+	\item OOM Manager will terminate the controller.
+	\item Device becomes unresponsive, worst case it even reboots.
+	\item {\bfseries Does not satisfy high availability requirements.}
+\end{itemize}
+\end{frame}
+
+\subsection{Problem Statement}
+\begin{frame}{Problem Statement}
+A more fine grained approach is needed, and is possible to give if the controller is implemented in Erlang.
+
+\begin{itemize}
+	\item The primary goal is to free up enough memory inside of the Erlang node to resume the normal operation of the controller.
+	\item We accept local failures.
+	\item We do not tolerate abnormal termination of the controller.
+	\item Our goal is to prevent a major outage, but we accept temporary, partial system degradations.
+\end{itemize}
+\end{frame}
+
+\section{Lesser Evil}
+\begin{frame}{Our approach: Lesser Evil}
+\begin{itemize}
+
+\item Goal: Treat memory pressure of an Erlang system without the need of code modification. 
+
+\item Idea: Monitor the running program and upon low memory conditions select some \emph{processes} with the greatest badness values and execute compensating actions on the selected processes. 
+\end{itemize}
+\end{frame}
+
+%% Our approach is called Lesser Evil, the reason being that we prefer the Lesser Evil, which can be a system surving low memory conditions by allowing the system to operate on a potencially degraded state.
+
+%% Our goal is to achieve this without the need for source code modification.
+
+%% The idea phrase captures really well our approach, but in order to fully understand it we need to expand more on:
+%% what processes are considered and why;
+%% what is badness and how it's used
+%% what are the compensating actions and how they are performed
+
+\subsection{Entities}
+\begin{frame}{Entities}
+\begin{itemize}
+
+\item Only a sub-set of the processes are considered, since some are critical.
+\item The programmer instructs Lesser Evil on what processes should be considered, by selecting applications for Lesser Evil to monitor.
+
+\end{itemize}
+\end{frame}
+
+\subsection{Badness}
+\begin{frame}{Goal}
+\begin{itemize}
+
+\item Assign higher values to processes that have high memory usage and that will likely continue executing.
+\item Assign lower values to processes that are long-lived, are important to the user and that several other processes depend on them (links, monitors).
+
+\end{itemize}
+\end{frame}
+
+% Badness is the metric used to select which processes Lesser Evil should target. So Lesser Evil assigns...
+
+\begin{frame}{Defining the badness metric}
+$$
+\mathit{badness} \equiv \frac{\mathit{Memory} * (\mathit{MessageQLength}+1)}{log_{10}(\mathit{Reds})*\mathit{Age}*(\mathit{Links}+1)*(\mathit{Mons}+1)*\mathit{Prio}}
+$$
+
+\begin{itemize}
+
+\item MessageQLength - how much more tasks the process has pending.
+\item Reds - amount of work the process has done.
+\item Age - number of checks the process has survived.
+\item Links and Mons - how central the process is.
+\item Prio - process priority.
+
+\end{itemize}
+
+% Lesser evil calculates it based on the following formula
+
+\end{frame}
+
+% With regards to compensating actions, our in other words the evil part of Lesser Evil, the ones we selected are to trigger a full sweep GC on the Erlang process and terminating the Erlang process.
+\subsection{Compensating actions}
+\begin{frame}{Strategy}
+
+Lesser Evil periodically collects metrics and activates itself on:
+$$
+\mathit{trigger}  \equiv \mathit{Mem} > 0.8 * \mathit{MemLimit}  \;\wedge \mathit{NotInCoolDownInterval}
+$$
+
+What compensating action is choosen:
+$$
+\mathit{select\_action}  \equiv \begin{cases}
+    \mathit{trigger\_gc}       & \quad \text{if } \mathit{Mem} < \mathit{MemLimit} \\
+    \mathit{terminate\_proc}  & \quad \text{otherwise}
+  \end{cases}
+$$
+
+\end{frame}
+
+
+%% The compensating actions are not harmless, triggering a full sweep garbage collection and terminating Erlang processes can influence negatively the normal functioning of the system, so lesser evil tries to lower the badness value for processes that are long-lived, are important to the user and that several other processes depend on them (links, monitors).
+
+
+\section{Evaluation}
+\subsection{Hyphotheses}
+\begin{frame}{Hypotheses}
+The goal of the evaluation is to confirm the following hypotheses.
+\begin{itemize}
+
+\item \emph{Hypothesis \#1: Lesser Evil can control the memory usage of an Erlang node, therefore, it helps an Erlang node survive low memory conditions.}
+\item \emph{Hypothesis \#2: Lesser Evil can prevent major outages.}
+\item \emph{Hypothesis \#3: Lesser Evil selects and executes actions on those processes that are mainly responsible for the memory usage and does not interfere with the rest of the processes.}
+\item \emph{Hypothesis \#4: Lesser Evil's agent is non-intrusive to the Erlang node, its memory usage is low.}
+
+\end{itemize}
+\end{frame}
+
+\subsection{Experiments}
+\begin{frame}{Experiments}
+\begin{itemize}
+\item SUT: embedded device controller.
+\item SUT runs in a Docker container: memory limit of 120 MB.
+\item Load generation: 80\% small requests, 20\% large requests.
+\item Linux OOM is active.
+\item Two set of experiments: with and without Lesser Evil.
+\end{itemize}
+\end{frame}
+
+\subsection{Results}
+\begin{frame}{Results}
+\input{plot.tex}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+\begin{itemize}
+
+\item Lesser Evil treats low memory pressure in Erlang systems without the need of any code modification.
+\item Lesser Evil embraces failures to protect overall system availability. 
+\item The evaluation shows that Lesser Evil can control the memory usage of an Erlang node and an embedded Erlang system can avoid a major outage and keep functioning under low memory conditions.
+\item Lesser Evil is ready to use and is applicable to any Erlang systems. It is available under:\\
+\textbf{https://github.com/viktoriafordos/lesser-evil}
+
+\end{itemize}
+\end{frame}
+
+
+%
+%\section{Clone detection}
+%\subsection{Background}
+%\begin{frame}[fragile]{Code clones}
+%\begin{minipage}{.38\textwidth}
+%\begin{itemize}
+%\item Special types of bad smell
+%\item Increase maintenance cost
+%\item Wide field of research, many existing approaches
+%\end{itemize}
+%\end{minipage}\hfill
+%\begin{minipage}{.5\textwidth}
+%\begin{figure}
+%\begin{lstlisting}[caption={Example clone}, captionpos=b]
+%% First instance
+%exec(Nd, seq([clause(), 
+%   form(), func()]))    
+%                          
+%% Second instance
+%exec(RecNode, seq([file(),  included(), mod()]))
+%\end{lstlisting}
+%\end{figure}
+%\end{minipage}
+%\end{frame}
+%
+%\subsection{Problem}
+%\begin{frame}{All that glitters is not gold}
+%\begin{center}
+%\includegraphics[width=0.9\textwidth]{slides_figures/good_bad_ugly.png}
+%\end{center}
+%\end{frame}
+%
+%\section{Universal filtering system}
+%\subsection{Project objectives}
+%\begin{frame}{Goals}
+%\begin{itemize}
+%\item Standalone, additional tool
+%\item Refines the results of existing approaches
+%\item Improves accuracy without compromising efficiency
+%\end{itemize}
+%\end{frame}
+%
+%\subsection{Approach}
+%\begin{frame}{Approach}
+%\begin{itemize}
+%\item General, language independent  algorithm
+%\item Refines the results of existing approaches
+%\item Removes insignificant (elements of) clones
+%\item Applies domain specific predicates
+%\begin{itemize}
+%\item simplifying clone elimination process
+%\item excluding exceptional clones
+%\end{itemize}
+%\item Predicates require some knowledge about the source code\begin{itemize}
+%\item Static analysers can come to rescue
+%\item RefactorErl 
+%\end{itemize}
+%\item Takes the initial clone groups as input
+%\item Provides maximised sub-groups (in terms of cardinality and length) satisfying the predicates
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]{Constraints}
+%\textbf{The elements of an initial clone group must have the same amount of building blocks}\\[1em]
+%\begin{minipage}{0.4\textwidth}
+%\begin{figure}
+%\begin{lstlisting}[caption={Good}, captionpos=b]
+%% First instance
+%f(A),
+%g(B)  
+%                          
+%% Second instance
+%f(C),
+%g(D)
+%\end{lstlisting}
+%\end{figure}
+%\end{minipage}\hfill
+%\begin{minipage}{0.4\textwidth}
+%\begin{figure}
+%\begin{lstlisting}[caption={Bad}, captionpos=b]
+%% First instance
+%f(A),
+%g(B)  
+%                          
+%% Second instance
+%f(C),
+%g(D),
+%h(E)
+%\end{lstlisting}
+%\end{figure}
+%\end{minipage}\\[-.5em]
+%Suffix tree based detectors provide clones satisfying this constraint
+%\end{frame}
+%
+%\subsection{Algorithm}
+%\begin{frame}[fragile]{Representation of groups}
+%Each initial group is represented as a matrix $
+%	G \in \mathcal{E}^{n \times m}
+%$\\[1em]
+%\begin{minipage}{0.30\textwidth}
+%\begin{figure}
+%\begin{lstlisting}[caption={Group}, captionpos=b]
+%% First instance
+%f(A),
+%g(B)  
+%                          
+%% Second instance
+%f(C),
+%g(D)
+%
+%% Third instance
+%f(E),
+%g(F)
+%\end{lstlisting}
+%\end{figure}
+%\end{minipage}\hfill
+%\begin{minipage}{0.6\textwidth}
+%\begin{itemize}
+%\item $n$ denotes the number of building blocks belonging to a clone
+%\item $m$ denotes the size of the group
+%\item Each column represents a clone instance belonging to the same group
+%\item The $i^{th}$ row refers to the $i^{th}$ building blocks of the instances
+%\end{itemize}
+%$$\bordermatrix{
+%~  &~~1~ & 2~ & 3\cr
+%1~  &~f(A)~ & f(C)~ & f(E)\cr
+%2~  &~g(B)~ & g(D)~ & g(F)\cr
+%} \in \mathcal{E}^{2 \times 3} $$
+%\end{minipage}
+%\end{frame}
+%
+%\begin{frame}{Representation of sub-groups}
+%Sub-group is represented by a \emph{selection} $s=(r=(l,u),c)$\\[1em]
+%\begin{minipage}{0.4\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/selection.png}
+%\end{minipage}\hfill
+%\begin{minipage}{0.5\textwidth}
+%$G \in \mathcal{E}^{3 \times 4}$\\[2em]
+%Selection painted red:\\
+%$s_{red}=((1,2), \{1,4\})$\\[2em]
+%Selection painted blue:\\
+%$s_{blue}=((1,3), \{2,3\})$
+%\end{minipage}
+%\end{frame}
+%
+%\begin{frame}{Domain specific predicate}
+%%Maximal-element size sub-groups containing 1-unit long instances \\[1em]
+%\begin{minipage}{0.4\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_plain_kicsi.png}\\[-0.5em]
+%\begin{center}
+%$G \in \mathcal{E}^{3 \times 4}$
+%\end{center}
+%\end{minipage}\hfill
+%\begin{minipage}{0.5\textwidth}
+%$f$, which is used only in this step, satisfies the followings:
+%\begin{itemize}
+%\item $f \subseteq \mathcal{E} \times \mathcal{E}$
+%\item symmetric relation
+%\item not necessarily transitive.
+%\end{itemize}
+%Through the examples let $f$ be the equivalence test.\\[1em]
+%$(G(1,1), G(1,2)) \in  f\  \text{viz.}\  a=a $\\ 
+%$(G(1,1), G(1,3)) \notin f\  \text{viz.}\  a \neq b$
+%\end{minipage}
+%\end{frame}
+%
+%\begin{frame}{First step - one-unit long clone instances }
+%$S_1 = \mathop\bigcup_{i=1}^n \Big\{ \ \big((i,i),c\big) \ \Big\vert \
+%	c \in \mathrm{MaxProperCliques} \big( \mathrm{graph}(f,G,i) \big) \Big\}$ \\[.5em]
+%\begin{minipage}{0.4\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step1.png}
+%\end{minipage}\hfill
+%\begin{minipage}{0.5\textwidth}
+%\includegraphics[width=0.7\textwidth]{slides_figures/fs_graph.png}
+%\end{minipage}\\[.5em]
+%$S_1 = \Big\{ ((1,1), \{1,2,4\}), ((2,2), \{1,2,3,4\}), ((3,3), \{2,4\}),$\\
+%$\quad \quad \quad ((3,3), \{1,3\})\Big\}$
+%\end{frame}
+%
+%\begin{frame}{Second step - Joining clone groups I.}
+%$ S_1' = \Big\{\big((\ell_1,u_2),c_1 \cap c_2\big)  \Big\vert |c_1 \cap c_2| > 1, $\\
+%$ \quad \quad \quad \big((\ell_1,u_1),c_1\big) \in S_1, \big((u_1+1,u_2),c_2\big) \in S_1 \Big\} $ \\[.5em]
+%\begin{minipage}{0.45\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step1.png}
+%\end{minipage}\hfill
+%\begin{minipage}{0.45\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step2a.png}
+%\end{minipage}\\[.5em]
+%$S_1' = \Big\{ ((1,2), \{1,2,4\}), ((3,4), \{2,4\}), ((3,4), \{1,3\})\Big\}$
+%\end{frame}
+%
+%\begin{frame}{Second step - Joining clone groups II.}
+%$ S_2 = S_1' \cup S_1 \setminus \big\{ s \ \big\vert \ 
+%	\exists s'\in S_1': s' \ \mathrm{\underline{covers}} \ s \big\}$ \\[.5em]
+%\begin{minipage}{0.45\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step1.png}
+%\end{minipage}\hfill
+%\begin{minipage}{0.45\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step2a.png}
+%\end{minipage}\\[.5em]
+%$S_2 = S_1' \cup S_1 \setminus \big\{ ((1,1), \{1,2,4\}), ((3,3), \{2,4\}), ((3,3), \{1,3\}) \big\}$
+%\end{frame}
+%
+%\begin{frame}{Third step - Glueing clone instances I.}
+%$ S_i' = \Big\{ s \ \Big\vert \ s_1, s_2 \in S_i,
+%	 s_1.r \ \mathrm{\underline{overlaps \ with}} \ s_2.r, $\\
+%$  \quad \quad \quad \quad s.r.\ell = \mathrm{min}(s_1.r.\ell,s_2.r.\ell),  s.r.u = \mathrm{max}(s_1.r.u,s_2.r.u), $\\
+%$ 	 \quad \quad \quad \quad s.c = s_1.c \cap s_2.c,
+%        |s.c| > 1 \Big\}$ \\[.5em]
+%\begin{minipage}{0.45\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step2.png}
+%\end{minipage}\hfill
+%\begin{minipage}{0.45\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step3a.png}
+%\end{minipage}\\[.5em]
+%$S_2' = \Big\{ ((1,4), \{2,4\}))\Big\}$
+%\end{frame}
+%
+%\begin{frame}{Third step - Glueing clone instances II.}
+%$ S_{i+1} = S_i' \cup S_i \setminus \big\{ s \ \big\vert \ 
+%	\exists s'\in S_i': s' \ \mathrm{\underline{covers}} \ s \big\}$ \\[.5em]
+%\begin{minipage}{0.45\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step2.png}
+%\end{minipage}\hfill
+%\begin{minipage}{0.45\textwidth}
+%\includegraphics[width=0.8\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step3a.png}
+%\end{minipage}\\[.5em]
+%$S_3 = S_i' \cup S_i \setminus \big\{  ((3,4), \{2,4\}) \big\}$
+%\end{frame}
+%
+%\begin{frame}{Result}
+%\begin{center}
+%\includegraphics[width=0.32\textwidth]{slides_figures/groups_fig_revised_suffixtree_matrix_szines_step3.png}
+%\end{center}
+%$S_3 = \Big\{ ((1,2), \{1,2,4\}), ((2,2), \{1,2,3,4\}), ((1,3), \{2,4\}),$\\
+%$\quad \quad \quad ((2,3), \{1,3\})\Big\}$ 
+%\end{frame}
+%
+%\section{Conclusion}
+%\begin{frame}{Conclusion}
+%\begin{itemize}
+%\item Universal filtering system
+%\item Standalone, additional tool
+%\item Can be customised for any language
+%\item Refines the results of existing approaches
+%\item Decreases maintenance cost
+%\end{itemize}
+%\begin{center}
+%{\large \bfseries Downloadable from http://refactorerl.com}
+%\end{center}
+%\end{frame}
+%
+%\begin{frame}{Conclusion}
+%\begin{itemize}
+%\item Universal filtering system
+%\item Standalone, additional tool
+%\item Can be customised for any language
+%\item Refines the results of existing approaches
+%\item Decreases maintenance cost
+%\end{itemize}
+%\begin{center}
+%{\large \bfseries Downloadable from http://refactorerl.com}\\[2em]
+%{\large \bfseries Thanks for your attention!}\\
+%{\large \bfseries Questions?}\\
+%\end{center}
+%\end{frame}
+\end{document}

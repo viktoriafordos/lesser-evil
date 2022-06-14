@@ -1,0 +1,31 @@
+name: Erlang CI
+
+on: [push]
+
+jobs:
+
+  build_and_test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.0.0
+    - uses: gleam-lang/setup-erlang@v1.1.0
+      with:
+        otp-version: 22.1
+    - name: Compile
+      run: make
+    - name: Run xref
+      run: make xref
+
+  dialyze:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.0.0
+    - uses: gleam-lang/setup-erlang@v1.1.0
+      with:
+        otp-version: 22.1
+    - name: Run dialyzer
+      run: make dialyzer

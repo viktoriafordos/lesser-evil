@@ -1,0 +1,12 @@
+[
+  {lesser_evil,
+   [{per_node_settings,
+     [{'le_test_app@${HOSTNAME}',
+      [{cpu_bound, true},
+       {memory_bound, true},
+       {max_cpu_load, 0.3},
+       {max_memory, 90}]}
+      ]},
+     {log, "/measurements/"}
+   ]}
+].

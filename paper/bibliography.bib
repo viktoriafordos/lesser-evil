@@ -1,0 +1,279 @@
+
+@misc{tiobe,
+  author={{TIOBE Software BV}},
+  title={{TIOBE Index}},
+  url={https://www.tiobe.com/tiobe-index/}
+ }
+@misc{lesser-evil,
+  author={{F\"{o}rd\H{o}s, Vikt\'{o}ria and Barbosa Rodrigues, Alexandre Jorge}},
+  title={{Lesser Evil prototype}},
+  url={https://github.com/viktoriafordos/lesser-evil}
+ }
+ 
+ @misc{tiobe2,
+ author={{2021 Statistics and Data}},
+ title={{The Most Popular Programming Languages – 1965/2021 – New Update}},
+url={https://statisticsanddata.org/data/the-most-popular-programming-languages-1965-2021/} 
+ }
+ 
+@INPROCEEDINGS{embedded3,
+  author={Bateni, Soroush and Wang, Zhendong and Zhu, Yuankun and Hu, Yang and Liu, Cong},
+  booktitle={{2020 IEEE Real-Time and Embedded Technology and Applications Symposium (RTAS)}}, 
+  title={{Co-Optimizing Performance and Memory Footprint Via Integrated CPU/GPU Memory Management, an Implementation on Autonomous Driving Platform}}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={310-323},
+  doi={10.1109/RTAS48715.2020.00007}}
+  
+ @ARTICLE{embedded4,
+  author={Hwang, Jeaho and Jeong, Jinkyu and Kim, Hwanju and Choi, Jeonghwan and Lee, Joonwon},
+  journal={IEEE Transactions on Consumer Electronics}, 
+  title={{Compressed memory swap for QoS of virtualized embedded systems}}, 
+  year={2012},
+  volume={58},
+  number={3},
+  pages={834-840},
+  doi={10.1109/TCE.2012.6311325}}
+  
+@book{smallmemorybook, author = {Noble, James and Weir, Charles}, title = {{Small Memory Software: Patterns for Systems with Limited Memory}}, year = {2001}, isbn = {0201596075}, publisher = {Addison-Wesley Longman Publishing Co., Inc.}, address = {USA} }
+
+@inproceedings{app10, author = {Sarimbekov, Aibek and Sewe, Andreas and Kell, Stephen and Zheng, Yudi and Binder, Walter and Bulej, Lubom\'{\i}r and Ansaloni, Danilo}, title = {{A Comprehensive Toolchain for Workload Characterization across JVM Languages}}, year = {2013}, isbn = {9781450321280}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/2462029.2462033}, doi = {10.1145/2462029.2462033}, abstract = {The Java Virtual Machine (JVM) today hosts implementations of numerous languages. To achieve high performance, JVM implementations rely on heuristics in choosing compiler optimizations and adapting garbage collection behavior. Historically, these heuristics have been tuned to suit the dynamics of Java programs only. This leads to unnecessarily poor performance in case of non-Java languages, which often exhibit systematic differences in workload behavior. Dynamic metrics characterizing the workload help to identify and quantify useful optimizations, but so far, no cohesive suite of metrics has adequately covered properties that vary systematically between Java and non-Java workloads. We present a suite of such metrics, justifying our choice with reference to a range of guest languages. These metrics are implemented on a common portable infrastructure which ensures ease of deployment and customization.}, booktitle = {Proceedings of the 11th ACM SIGPLAN-SIGSOFT Workshop on Program Analysis for Software Tools and Engineering}, pages = {9–16}, numpages = {8}, keywords = {dynamic metrics, workload characterization, bytecode instrumentation, dynamic program analysis}, location = {Seattle, Washington}, series = {PASTE '13} }
+
+@article{app11,
+title = {Adaptive just-in-time value class optimization for lowering memory consumption and improving execution time performance},
+journal = {Science of Computer Programming},
+volume = {140},
+pages = {17-29},
+year = {2017},
+note = {Object-Oriented Programming and Systems (OOPS 2015)},
+issn = {0167-6423},
+doi = {https://doi.org/10.1016/j.scico.2016.08.003},
+url = {https://www.sciencedirect.com/science/article/pii/S0167642316301034},
+author = {Tobias Pape and Carl Friedrich Bolz and Robert Hirschfeld},
+keywords = {Meta-tracing, JIT, Data structure optimization, Value classes},
+abstract = {The performance of value classes is highly dependent on how they are represented in the virtual machine. Value class instances are immutable, have no identity, and can only refer to other value objects or primitive values and since they should be very lightweight and fast, it is important to optimize them carefully. In this paper we present a technique to detect and compress common patterns of value class usage to improve memory usage and performance. The technique identifies patterns of frequent value object references and introduces abbreviated forms for them. This allows to store multiple inter-referenced value objects in an inlined memory representation, reducing the overhead stemming from meta-data and object references. Applied to a small prototype and an implementation of the Racket language, we found improvements in memory usage and execution time for several micro-benchmarks.}
+}
+ @article{embedded-low3, author = {Venkataramani, Vanchinathan and Chan, Mun Choon and Mitra, Tulika}, title = {{Scratchpad-Memory Management for Multi-Threaded Applications on Many-Core Architectures}}, year = {2019}, issue_date = {February 2019}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, volume = {18}, number = {1}, issn = {1539-9087}, url = {https://doi.org/10.1145/3301308}, doi = {10.1145/3301308},  journal = {ACM Trans. Embed. Comput. Syst.}, month = feb, articleno = {10}, numpages = {28}, keywords = {Scratchpad memory management, many-core architectures} }
+
+
+ @inproceedings{ embedded-low2, author = {Wu, Chin-Hsien and Kuo, Tei-Wei}, title ={{An Adaptive Two-Level Management for the Flash Translation Layer in Embedded Systems}}, year = {2006}, isbn = {1595933891}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/1233501.1233624}, doi = {10.1145/1233501.1233624}, abstract = {While the capacity of flash-memory storage systems keeps increasing significantly, effective and efficient management of flash-memory space has become a critical design issue! Different granularities in space management impose different management costs and mapping efficiency. In this paper, we explore an address translation mechanism that can dynamically and adaptively switch between two granularities in the mapping of logical block addresses into physical block addresses in flash memory management. The objective is to provide good performance in address mapping and space utilization and, at the same time, to have the memory space requirements, and the garbage collection overhead under proper management. The experimental results show that the proposed adaptive mechanism could provide significant performance improvement over the well-known coarsegrained management mechanism NFTL (NAND Flash Translation Layer) over realistic workloads.}, booktitle = {Proceedings of the 2006 IEEE/ACM International Conference on Computer-Aided Design}, pages = {601–606}, numpages = {6}, keywords = {embedded systems, flash memory, flash translation layer, storage systems}, location = {San Jose, California}, series = {ICCAD '06} }
+
+ @inproceedings{ embedded-low1, author = {Liu, Duo and Wang, Tianzheng and Wang, Yi and Qin, Zhiwei and Shao, Zili}, title = {{A Block-Level Flash Memory Management Scheme for Reducing Write Activities in PCM-Based Embedded Systems}}, year = {2012}, isbn = {9783981080186}, publisher = {EDA Consortium}, address = {San Jose, CA, USA}, abstract = {This paper targets at an embedded system with phase change memory (PCM) and NAND flash memory. Although PCM is a promising main memory alternative and is recently introduced to embedded system designs, its endurance keeps drifting down and greatly limits the lifetime of the whole system. Therefore, this paper presents a block-level flash memory management scheme, WAB-FTL, to effectively manage NAND flash memory while reducing write activities of the PCM-based embedded systems. The basic idea is to preserve each bit in flash mapping table hosted by PCM from being inverted frequently during the process of mapping table update. To achieve this, a new merge strategy is adopted in WAB-FTL to delay the mapping table update, and a tiny mapping buffer is used for caching frequently updated mapping records. Experimental results based on Android traces show that WAB-FTL can effectively reduce write activities when compared with the baseline scheme.}, booktitle = {Proceedings of the Conference on Design, Automation and Test in Europe}, pages = {1447–1450}, numpages = {4}, keywords = {phase change memory, flash translation layer, NAND flash memory, write activity, endurance}, location = {Dresden, Germany}, series = {DATE '12} }
+
+@book{elixir,
+author = {Thomas, Dave},
+title = {{Programming Elixir: Functional | Concurrent | Pragmatic | Fun}},
+year = {2014},
+isbn = {1937785580},
+publisher = {Pragmatic Bookshelf},
+edition = {1st},
+abstract = {You want to explore functional programming, but are put off by the academic feel (tell me about monads just one more time). You know you need concurrent applications, but also know these are almost impossible to get right. Meet Elixir, a functional, concurrent language built on the rock-solid Erlang VM. Elixir's pragmatic syntax and built-in support for metaprogramming will make you productive and keep you interested for the long haul. This book is the introduction to Elixir for experienced programmers. Maybe you need something that's closer to Ruby, but with a battle-proven environment that's unrivaled for massive scalability, concurrency, distribution, and fault tolerance. Maybe the time is right for the Next Big Thing. Maybe it's Elixir. And don't forget to download this handy "cheat sheet":https://media.pragprog.com/titles/elixir/ElixirCheat.pdf for Elixir syntax.h5. Print books will be available after Elixir 1.0 has been finalized. As a developer, you've probably heard that functional programming techniques help manage the complexities of today's real-world, concurrent systems. You're also investigating designs that help you maximize uptime and manage security. This book is your guide to Elixir, a modern, functional, and concurrent programming language. Because Elixir runs on the Erlang VM, and uses the underlying Erlang/OTP architecture, it benefits from almost 20 years of research into high performance, highly parallel, and seriously robust applications. Elixir brings a lot that's new: a modern, Ruby-like, extendable syntax, compile and runtime evaluation, a hygienic macro system, and more. But, just as importantly, Elixir brings a sense of enjoyment to parallel, functional programming. Your applications become fun to work with, and the language encourages you to experiment. Part 1 covers the basics of writing sequential Elixir programs. We'll look at the language, the tools, and the conventions. Part 2 uses these skills to start writing concurrent code--applications that use all the cores on your machine, or all the machines on your network! And we do it both with and without OTP. And Part 3 looks at the more advanced features of the language, from DSLs and code generation to extending the syntax. By the end of this book, you'll understand Elixir, and know how to apply it to solve your complex, modern problems.}
+}
+
+@misc{ranch,
+  author={{Loic Hoguin}},
+  title={{Ranch}},
+  url={https://github.com/ninenines/ranch}
+ }
+
+@misc{json,
+  author={{Takeru Ohta}},
+  title={{Jsone}},
+  url={https://github.com/sile/jsone/}
+ }
+
+@misc{cowboy,
+  author={{Loic Hoguin}},
+  title={{Cowboy}},
+  url={https://github.com/ninenines/cowboy}
+ }
+
+@inproceedings{klarna, author = {F\"{o}rd\H{o}s, Vikt\'{o}ria and Boz\'{o}, Istv\'{a}n and T\'{o}th, Melinda}, title = {Towards Change-Driven Testing}, year = {2017}, isbn = {9781450351799}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/3123569.3123575}, doi = {10.1145/3123569.3123575}, abstract = { Engineering complex business critical systems that should never stop or fail is very much challenging. In Klarna, we tackle this challenge day by day. The secret sauce, which enables us to ensure the highest software quality, is the thorough validation process. However, one must pay the price of such validation process, which is essentially time. In this paper we present our initial work on fast tracking the validation of code changes without compromising software quality and give a preliminary evaluation on our technique. }, booktitle = {Proceedings of the 16th ACM SIGPLAN International Workshop on Erlang}, pages = {64–65}, numpages = {2}, keywords = {regression testing, impact analysis, RefactorErl, software testing}, location = {Oxford, UK}, series = {Erlang 2017} }
+
+@inproceedings{klarna2, author = {Aronis, Stavros and F\"{o}rd\H{o}s, Vikt\'{o}ria and Szoboszlay, D\'{a}niel}, title ={{Modelling Distributed Erlang within a Single Node}}, year = {2018}, isbn = {9781450358248}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/3239332.3242764}, doi = {10.1145/3239332.3242764}, abstract = {This paper was motivated by a challenge we faced while re-architecting a critical component in Klarna's software stack. We wanted to increase our confidence about correctness aspects of a new distributed algorithm, developed for an Erlang system at the very core of Klarna's business. Reasoning about the correctness of concurrent Erlang systems is a difficult task, but tools exist that can help, for instance, Concuerror. However, our algorithm was intimately linked to distributed Erlang's behaviours, which are not supported by Concuerror. The solution we came up with was to design and implement vnet, a modelling library which can be used to simulate the behaviour of distributed Erlang nodes within a single Erlang node. We discuss aspects of vnet showing its capabilities and limitations. We also report on two case studies, showing how vnet can be used to prototype, test and verify simple and advanced distributed Erlang systems. We finally demonstrate that we were able to find errors and verify properties in the systems of our case studies, using Concuerror.}, booktitle = {Proceedings of the 17th ACM SIGPLAN International Workshop on Erlang}, pages = {25–36}, numpages = {12}, keywords = {distributed Erlang model, testing, software correctness, Concuerror}, location = {St. Louis, MO, USA}, series = {Erlang 2018} }
+
+@inproceedings{axd, author = {Cronqvist, Mats}, title = {{Troubleshooting a Large Erlang System}}, year = {2004}, isbn = {1581139187}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/1022471.1022474}, doi = {10.1145/1022471.1022474}, abstract = {In this paper, we discuss some experiences from a large, industrial software project using a functional programming language. In particular, we will focus on programming errors.The software studied is the AXD 301 (a multi-service switch from Ericsson AB [1]) control system. It is implemented in a functional language Erlang [2 ]. We will discuss ho this affects programmer productivity.There are now well over 1,000 AXD 301's deployed. Even though a properly handled AXD 301 is quite reliable, there exists a great deal of knowledge about problems that do occur in production code. We will analyze what kinds of programming errors cause these problems, and suggest some methods for preventing and, when that fails, finding the errors. We will also describe some tools that has been specifically developed to aid in debugging.One (perceived) problem with using a interpreted, functional language is execution speed. In practice, we have found that the overhead of running in an emulator is not dramatic, and that it is often more than compensated for by the advantages. The expressiveness of the language and the absence of low-level bugs means that programmers have more time to spend on tuning the code. And since the emulator has good support for tracing, one can perform very advanced profiling, thus making the code intrinsically more effective. We will discuss a profiling tool developed for that purpose.}, booktitle = {Proceedings of the 2004 ACM SIGPLAN Workshop on Erlang}, pages = {11–15}, numpages = {5}, keywords = {erlang}, location = {Snowbird, Utah, USA}, series = {ERLANG '04} }
+
+@book{erlang,
+ author = {Cesarini, Francesco and Thompson, Simon},
+ title = {{ERLANG Programming}},
+ year = {2009},
+ isbn = {0596518188, 9780596518189},
+ edition = {1st},
+ publisher = {O'Reilly Media, Inc.}
+} 
+
+@misc{supervisor,
+  author={{Ericsson AB}},
+  title={{OTP Design Principles: Supervisor Behaviour}},
+  url={https://erlang.org/doc/design\_principles/sup\_princ.html}
+ }
+
+ @misc{application,
+  author={{Ericsson AB}},
+  title={{OTP Design Principles: Applications}},
+  url={https://erlang.org/doc/design\_principles/applications.html}
+ }
+
+ @misc{release,
+  author={{Ericsson AB}},
+  title={{OTP Design Principles: Releases}},
+  url={https://erlang.org/doc/design\_principles/release\_structure.html}
+ }
+  
+@misc{fault-tolerance,
+  author={{Ericsson AB}},
+  title={{Erlang Reference Manual: Errors and Error Handling}},
+  url={https://erlang.org/doc/reference\_manual/errors.html}
+ }
+
+@misc{garbage-collector,
+  author={{Ericsson AB}},
+  title={{Erlang Run-Time System Application, Internal Documentation: Erlang Garbage Collector}},
+  url={https://erlang.org/doc/apps/erts/GarbageCollection.html}
+ }
+
+@misc{scheduler,
+  author={{Erik Stenman}},
+  title={{The BEAM Book: Scheduling: Non-preemptive, Reduction counting}},
+  url={https://blog.stenmans.org/theBeamBook/\#\_scheduling\_non\_preemptive \_reduction\_counting}
+ }
+
+@misc{message-passing,
+  author={{Erik Stenman}},
+  title={{The BEAM Book: Mailboxes and Message Passing}},
+  url={https://blog.stenmans.org/theBeamBook/\#\_mailboxes\_and\_message\_passing}
+ }
+
+@misc{processes,
+  author={{Ericsson AB}},
+  title={{Erlang Reference Manual: Processes}},
+  url={http://erlang.org/doc/reference\_manual/processes.html}
+ }
+
+@misc{ps,
+  author={{Michael Kerrisk}},
+  title={{Linux manual page: ps(1)}},
+  url={https://man7.org/linux/man-pages/man1/ps.1.html}
+ }
+
+@misc{loadgen,
+  author={{Basho}},
+  title={{Basho Bench}},
+  url={https://github.com/alexandrejbr/basho\_bench}
+ }
+
+%% Related work
+
+@misc{mesos-oversub,
+  author={{The Apache Software Foundation}},
+  title={{Apache Mesos Documentation: Oversubscription}},
+  url={http://mesos.apache.org/documentation/latest/oversubscription/}
+ }
+
+@book{mesos,
+  title={Apache Mesos Essentials},
+  author={Kakadia, Dharmesh},
+  year={2015},
+  publisher={Packt Publishing Ltd}
+}
+
+@inproceedings{mesos2, author = {Hindman, Benjamin and Konwinski, Andy and Zaharia, Matei and Ghodsi, Ali and Joseph, Anthony D. and Katz, Randy and Shenker, Scott and Stoica, Ion}, title = {{Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center}}, year = {2011}, publisher = {USENIX Association}, address = {USA}, abstract = {We present Mesos, a platform for sharing commodity clusters between multiple diverse cluster computing frameworks, such as Hadoop and MPI. Sharing improves cluster utilization and avoids per-framework data replication. Mesos shares resources in a fine-grained manner, allowing frameworks to achieve data locality by taking turns reading data stored on each machine. To support the sophisticated schedulers of today's frameworks, Mesos introduces a distributed two-level scheduling mechanism called resource offers. Mesos decides how many resources to offer each framework, while frameworks decide which resources to accept and which computations to run on them. Our results show that Mesos can achieve near-optimal data locality when sharing the cluster among diverse frameworks, can scale to 50,000 (emulated) nodes, and is resilient to failures.}, booktitle = {Proceedings of the 8th USENIX Conference on Networked Systems Design and Implementation}, pages = {295–308}, numpages = {14}, location = {Boston, MA}, series = {NSDI'11} }
+
+
+@book{oom, author = {Gorman, Mel}, title = {{Understanding the Linux Virtual Memory Manager}}, year = {2004}, isbn = {0131453483}, publisher = {Prentice Hall PTR}, address = {USA}, abstract = {Finally, a comprehensive guide to the Linux VM!VM's behavior affects every Linux kernel subsystem and dramatically impacts overall performance. But until now, there was only one way to understand VM: study the poorly documented source one line at a time. Now there's an easier, faster alternative. This book describes VM in unprecedented detail, presenting both theoretical foundations and a line-by-line source code commentary. It systematically covers everything from physical memory description to out-of-memory management. Coverage includes: Linux VM 2.4 architecture in depth-with diagrams and call graphs Physical memory description, page tables, address spaces, and memory allocation High memory, swapping, shared memory, and much more Expert guidance for analyzing the code of any open source project New Linux 2.6 kernel features in every chapterWell organized and superbly written, Understanding the Linux Virtual Memory Manager will be indispensable to every kernel programmer and researcher.} 
+}
+
+@inproceedings{UAkiller, author = {Chen, Wei and Pi, Aidi and Wang, Shaoqi and Zhou, Xiaobo}, title = {{OS-Augmented Oversubscription of Opportunistic Memory with a User-Assisted OOM Killer}}, year = {2019}, isbn = {9781450370097}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, doi = {10.1145/3361525.3361534}, abstract = {Exploiting opportunistic memory by oversubscription is an appealing approach to improving cluster utilization and throughput. In this paper, we find the efficacy of memory oversubscription depends on whether or not the oversubscribed tasks can be killed by an OutOf Memory (OOM) killer in a timely manner to avoid significant memory thrashing upon memory pressure. However, current approaches in modern cluster schedulers are actually unable to unleash the power of opportunistic memory because their user space OOM killers are unable to timely deliver a task killing signal to terminate the oversubscribed tasks. Our experiments observe that a user space OOM killer fails to do that because of lacking the memory pressure knowledge from OS while the kernel space Linux OOM killer is too conservative to relieve memory pressure.In this paper, we design a user-assisted OOM killer (namely UA killer) in kernel space, an OS augmentation for accurate thrashing detection and agile task killing. To identify a thrashing task, UA killer features a novel mechanism, constraint thrashing. Upon UA killer, we develop Charon, a cluster scheduler for oversubscription of opportunistic memory in an on-demand manner. We implement Charon upon Mercury, a state-of-the-art opportunistic cluster scheduler. Extensive experiments with a Google trace in a 26-node cluster show that Charon can: (1) achieve agile task killing, (2) improve the best-effort job throughput by 3.5X over Mercury while prioritizing the production jobs, and (3) improve the 90th job completion time of production jobs over Kubernetes opportunistic scheduler by 62%.}, booktitle = {Proceedings of the 20th International Middleware Conference}, pages = {28–40}, numpages = {13}, keywords = {Linux system, cloud computing, resource sharing, memory management, distributed system}, location = {Davis, CA, USA}, series = {Middleware '19} }
+
+ 
+@inproceedings{app1,
+  title={Dynamic memory pressure aware ballooning},
+  author={Kim, Jinchun and Fedorov, Viacheslav and Gratz, Paul V and Reddy, AL Narasimha},
+  booktitle={Proceedings of the 2015 International Symposium on Memory Systems},
+  pages={103--112},
+  year={2015}
+}
+
+@inproceedings{app2,
+  title={Adapting to memory pressure from within scientific applications on multiprogrammed COWs},
+  author={Mills, Richard Tran and Stathopoulos, Andreas and Nikolopoulos, Dimitrios S},
+  booktitle={18th International Parallel and Distributed Processing Symposium, 2004. Proceedings.},
+  pages={71},
+  year={2004},
+  organization={IEEE}
+}
+
+@inproceedings{app3,
+  title={{Adaptive scheduling under memory pressure on multiprogrammed SMPs}},
+  author={Nikolopoulos, Dimitrios S and Polychronopoulos, Constantine D},
+  booktitle={Proceedings 16th International Parallel and Distributed Processing Symposium},
+  year={2002},
+  organization={IEEE}
+}
+
+@ARTICLE{app4,
+  author={Z. {Liu} and T. S. E. {Ng}},
+  journal={IEEE Transactions on Parallel and Distributed Systems}, 
+  title={{Leaky Buffer: A Novel Abstraction for Relieving Memory Pressure from Cluster Data Processing Frameworks}}, 
+  year={2017},
+  volume={28},
+  number={1},
+  pages={128-140},
+  doi={10.1109/TPDS.2016.2546909}}
+
+@INPROCEEDINGS{app5,
+  author={V. {Borkar} and M. {Carey} and R. {Grover} and N. {Onose} and R. {Vernica}},
+  booktitle={2011 IEEE 27th International Conference on Data Engineering}, 
+  title={Hyracks: A flexible and extensible foundation for data-intensive computing}, 
+  year={2011},
+  volume={},
+  number={},
+  pages={1151-1162},
+  doi={10.1109/ICDE.2011.5767921}}
+
+@inproceedings{app6, 
+author = {Bu, Yingyi and Borkar, Vinayak and Xu, Guoqing and Carey, Michael J.}, title = {{A Bloat-Aware Design for Big Data Applications}}, year = {2013}, isbn = {9781450321006}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/2464157.2466485}, doi = {10.1145/2464157.2466485}, abstract = {Over the past decade, the increasing demands on data-driven business intelligence have led to the proliferation of large-scale, data-intensive applications that often have huge amounts of data (often at terabyte or petabyte scale) to process. An object-oriented programming language such as Java is often the developer's choice for implementing such applications, primarily due to its quick development cycle and rich community resource. While the use of such languages makes programming easier, significant performance problems can often be seen --- the combination of the inefficiencies inherent in a managed run-time system and the impact of the huge amount of data to be processed in the limited memory space often leads to memory bloat and performance degradation at a surprisingly early stage.This paper proposes a bloat-aware design paradigm towards the development of efficient and scalable Big Data applications in object-oriented GC enabled languages. To motivate this work, we first perform a study on the impact of several typical memory bloat patterns. These patterns are summarized from the user complaints on the mailing lists of two widely-used open-source Big Data applications. Next, we discuss our design paradigm to eliminate bloat. Using examples and real-world experience, we demonstrate that programming under this paradigm does not incur significant programming burden. We have implemented a few common data processing tasks both using this design and using the conventional object-oriented design. Our experimental results show that this new design paradigm is extremely effective in improving performance --- even for the moderate-size data sets processed, we have observed 2.5x+ performance gains, and the improvement grows substantially with the size of the data set.}, booktitle = {Proceedings of the 2013 International Symposium on Memory Management}, pages = {119–130}, numpages = {12}, keywords = {memory bloat, design, big data applications}, location = {Seattle, Washington, USA}, series = {ISMM '13} }
+
+@article{app7, author = {Bu, Yingyi and Borkar, Vinayak and Jia, Jianfeng and Carey, Michael J. and Condie, Tyson}, title = {Pregelix: Big(Ger) Graph Analytics on a Dataflow Engine}, year = {2014}, issue_date = {October 2014}, publisher = {VLDB Endowment}, volume = {8}, number = {2}, issn = {2150-8097}, doi = {10.14778/2735471.2735477}, abstract = {There is a growing need for distributed graph processing systems that are capable of gracefully scaling to very large graph datasets. Unfortunately, this challenge has not been easily met due to the intense memory pressure imposed by process-centric, message passing designs that many graph processing systems follow. Pregelix is a new open source distributed graph processing system that is based on an iterative dataflow design that is better tuned to handle both in-memory and out-of-core workloads. As such, Pregelix offers improved performance characteristics and scaling properties over current open source systems (e.g., we have seen up to 15X speedup compared to Apache Giraph and up to 35X speedup compared to distributed GraphLab), and more effective use of available machine resources to support Big(ger) Graph Analytics.}, journal = {Proc. VLDB Endow.}, month = oct, pages = {161–172}, numpages = {12} }
+
+@article{app8, author = {Chaiken, Ronnie and Jenkins, Bob and Larson, Per-\r{A}ke and Ramsey, Bill and Shakib, Darren and Weaver, Simon and Zhou, Jingren}, title = {{SCOPE: Easy and Efficient Parallel Processing of Massive Data Sets}}, year = {2008}, issue_date = {August 2008}, publisher = {VLDB Endowment}, volume = {1}, number = {2}, issn = {2150-8097},  doi = {10.14778/1454159.1454166}, abstract = {Companies providing cloud-scale services have an increasing need to store and analyze massive data sets such as search logs and click streams. For cost and performance reasons, processing is typically done on large clusters of shared-nothing commodity machines. It is imperative to develop a programming model that hides the complexity of the underlying system but provides flexibility by allowing users to extend functionality to meet a variety of requirements.In this paper, we present a new declarative and extensible scripting language, SCOPE (Structured Computations Optimized for Parallel Execution), targeted for this type of massive data analysis. The language is designed for ease of use with no explicit parallelism, while being amenable to efficient parallel execution on large clusters. SCOPE borrows several features from SQL. Data is modeled as sets of rows composed of typed columns. The select statement is retained with inner joins, outer joins, and aggregation allowed. Users can easily define their own functions and implement their own versions of operators: extractors (parsing and constructing rows from a file), processors (row-wise processing), reducers (group-wise processing), and combiners (combining rows from two inputs). SCOPE supports nesting of expressions but also allows a computation to be specified as a series of steps, in a manner often preferred by programmers. We also describe how scripts are compiled into efficient, parallel execution plans and executed on large clusters.}, journal = {Proc. VLDB Endow.}, month = aug, pages = {1265–1276}, numpages = {12} }
+
+@inproceedings{app9, author = {Tang, Yan and Gao, Qi and Qin, Feng}, title = {{LeakSurvivor: Towards Safely Tolerating Memory Leaks for Garbage-Collected Languages}}, year = {2008}, publisher = {USENIX Association}, address = {USA}, abstract = {Continuous memory leaks severely hurt program performance and software availability for garbage-collected programs. This paper presents a safe method, called LeakSurvivor, to tolerate continuous memory leaks at runtime for garbage-collected programs. Our main idea is to periodically swap out the "Potentially Leaked" (PL) memory objects identified by leak detectors from the virtual memory to disks. As a result, the virtual memory space occupied by the PL objects can be reclaimed by garbage collectors and available for future uses. If a swapped-out PL object is accesses later, LeakSurvivor will restore it from disks to the memory for correct program execution. Furthermore, LeakSurvivor helps developers to prune false positives.We have built the prototype of LeakSurvivor on top of Jikes RVM 2.4.2, a high performance Java-in-Java virtual machine developed by IBM. We conduct the experiments with three Java applications including Eclipse, SPECjbb2000 and Jigsaw. Among them, Eclipse and Jigsaw contain memory leaks introduced by their developers, while SPECjbb2000 contain a memory leak injected by us. Our results show that LeakSurvivor effectively tolerates memory leaks for two applications (Eclipse and SPECjbb2000), i.e., no cumulative performance degradation and no software failures when facing continuous memory leaks at runtime. For Jigsaw, LeakSurvivor extends the program lifetime by two times and improves the performance by 46% compared with native runs. Furthermore, when there are no memory leaks, LeakSurvivor imposes small runtime overhead, i.e., 2.5% over the leak detector and 23.7% over the native runs.}, booktitle = {USENIX 2008 Annual Technical Conference}, pages = {307–320}, numpages = {14}, location = {Boston, Massachusetts}, series = {ATC'08} }
+
+@inproceedings{xu2015experience,
+  title={Experience report: A characteristic study on out of memory errors in distributed data-parallel applications},
+  author={Xu, Lijie and Dou, Wensheng and Zhu, Feng and Gao, Chushu and Liu, Jie and Zhong, Hua and Wei, Jun},
+  booktitle={2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)},
+  pages={518--529},
+  year={2015},
+  organization={IEEE}
+}
+
+@inproceedings{yang2006cramm,
+  title={{CRAMM: Virtual memory support for garbage-collected applications}},
+  author={Yang, Ting and Berger, Emery D and Kaplan, Scott F and Moss, J Eliot B},
+  booktitle={Proceedings of the 7th symposium on Operating systems design and implementation},
+  pages={103--116},
+  year={2006}
+}
+
+@inproceedings{hedgetechnique,
+  title={Handling out of memory errors},
+  author={Boyland, John Tang},
+  booktitle={ECOOP 2005 Workshop on Exception Handling in Object-Oriented Systems},
+  volume={2005},
+  year={2005}
+}
+
+@inproceedings{itasks, 
+author = {Fang, Lu and Nguyen, Khanh and Xu, Guoqing and Demsky, Brian and Lu, Shan}, title = {{Interruptible Tasks: Treating Memory Pressure as Interrupts for Highly Scalable Data-Parallel Programs}}, year = {2015}, isbn = {9781450338349}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA},  doi = {10.1145/2815400.2815407}, abstract = {Real-world data-parallel programs commonly suffer from great memory pressure, especially when they are executed to process large datasets. Memory problems lead to excessive GC effort and out-of-memory errors, significantly hurting system performance and scalability. This paper proposes a systematic approach that can help data-parallel tasks survive memory pressure, improving their performance and scalability without needing any manual effort to tune system parameters. Our approach advocates interruptible task (ITask), a new type of data-parallel tasks that can be interrupted upon memory pressure---with part or all of their used memory reclaimed---and resumed when the pressure goes away.To support ITasks, we propose a novel programming model and a runtime system, and have instantiated them on two state-of-the-art platforms Hadoop and Hyracks. A thorough evaluation demonstrates the effectiveness of ITask: it has helped real-world Hadoop programs survive 13 out-of-memory problems reported on StackOverflow; a second set of experiments with 5 already well-tuned programs in Hyracks on datasets of different sizes shows that the ITask-based versions are 1.5--3x faster and scale to 3--24x larger datasets than their regular counterparts.}, booktitle = {Proceedings of the 25th Symposium on Operating Systems Principles}, pages = {394–409}, numpages = {16}, location = {Monterey, California}, series = {SOSP '15} }
+
+@article{embracingfailures, author = {Choudhury, Diptanu Gon and Perrett, Timothy}, title = {Designing Cluster Schedulers for Internet-Scale Services: Embracing Failures for Improving Availability}, year = {2018}, issue_date = {January-February 2018}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, volume = {16}, number = {1}, issn = {1542-7730}, doi = {10.1145/3194653.3199609}, abstract = {Engineers looking to build scheduling systems should consider all failure modes of the underlying infrastructure they use and consider how operators of scheduling systems can configure remediation strategies, while aiding in keeping tenant systems as stable as possible during periods of troubleshooting by the owners of the tenant systems.}, journal = {Queue}, month = feb, pages = {98–119}, numpages = {22} }
+
+@misc{johan,
+	author = {Johan Bevemyr},	
+	title = {{How Cisco is using Erlang for intent-based networking. Talk at Code BEAM STO 2018, Stockholm, Sweden, 31 May, 2018}},
+	url = {https://youtu.be/077-XJv6PLQ?t=109}
+	}
